@@ -22,6 +22,33 @@ char ** parse_args( char * line, char * parse_for ) {
 
 int run( char * a, char **b ) {
 
+  //char** args = (char **)calloc(6, sizeof(char *));
+  int i;
+  int i2;
+  for(i = 0; b[i]; i++) {
+    printf("b[%d]: %s \n", i, b[i]);
+
+    if (!strcmp(b[i], ";")) {
+      
+      if (!fork()) { //child process
+	printf("need to split\n");
+	char **secondHalf = &b[i + 2];
+	printf("secondhalf[i] = %s", secondHalf[i]);
+	//return(run(secondHalf[i], secondHalf));
+	return 1;
+      }
+      
+    }
+    
+  }
+  
+  /*
+    if (!strcmp(b[i], ";")) {
+      //printf("there is a ; :/ \n");
+      break;
+    }      
+    */
+  
   if (!strcmp(a, "exit")) {
     return 10; //10 for exit
   }
@@ -63,35 +90,32 @@ int main(int argc, char *argv[]) {
     //printf("args = %s\n", args[0]);
     args = parse_args(command, "\n");//removing newlines from fgets retval
     args = parse_args(command, " "); //parses through the string by " "
-    args = parse_args(command, ";"); //parses through the string by ;
+    //args = parse_args(command, ";"); //parses through the string by ;
     
-    while(args[counter]) {
+    //while(args[counter]) {
 	 
-      if (!fork()) { //child process
-	//close(fds[READ]);
-	return(run(args[counter][0], args[counter]));
-	//write(fds[WRITE], &i, 4);
-      }
-      else { //parent process
-	//close(fds[WRITE]);
-	//read(fds[READ], &i, 4);
-	//printf("%d", i);
-	cpid = waitpid(-1, &status, 0);
-	ret = (unsigned char *) &status;
-	ret++;
-
-	if (*ret == 10) {//exit
-	  exit(SIGSTOP);
-	}
-	else if (*ret == 11) {//cd
-	  cd(args[counter]);
-	}
-      }
-
-      counter++;
+    if (!fork()) { //child process
+      //close(fds[READ]);
+      return(run(args[0], args));
+      //write(fds[WRITE], &i, 4);
     }
-    
-    return 0;
-  
+    else { //parent process
+      //close(fds[WRITE]);
+      //read(fds[READ], &i, 4);
+      //printf("%d", i);
+      cpid = waitpid(-1, &status, 0);
+      ret = (unsigned char *) &status;
+      ret++;
+      
+      if (*ret == 10) {//exit
+	exit(SIGSTOP);
+      }
+      else if (*ret == 11) {//cd
+	cd(args);
+      }
+    }
   }
+        
+  return 0;
+  
 }
