@@ -3,12 +3,14 @@ Shell
 by Xing Tao Shi
 
 Features:
+
 	Forks and executes commands!
 	Parses multiple commands on one line!
 	Redirects using >!
 	Can pipe singularly
 
 Attempted:
+
 	Tried to implement < redirects but was not able to
 	Planned to implement colors and auto-completion but got stuck on < redirect
 
@@ -17,6 +19,7 @@ Bugs:
 	
 Files & Function Headers:
 shell.c
+
 	Handles everything
 	/*======== char ** parse_args(char *, char *) ==========
 	Inputs:  char *line, and char *parse_for
