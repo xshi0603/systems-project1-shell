@@ -68,6 +68,25 @@ void redirect_out(char *args[256]) {
     }
 }
 
+void redirect_in(char *args[256]) {
+
+  int i;
+  for (i = 0; args[i]; i++) {
+
+    int file;
+
+    if (args[i][0] == '<') {
+      char* file_name = args[i+1];
+      file = open(file_name,  O_RDONLY);
+      dup2(file, 0);
+      close(file);
+      args[i] = 0;
+    }
+    
+  }
+  
+}
+
 int piping(char *args[256]) {
     int counter;
     int ran = -1;
@@ -129,6 +148,7 @@ void execute() {
       if (!fork()) { //child process
 
 	redirect_out(args);
+	redirect_in(args);
 	run(args[0], args);
 
       }

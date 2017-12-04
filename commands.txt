@@ -1,0 +1,33 @@
+echo --------------
+echo TESTING LS
+echo --------------
+ls
+echo --------------
+echo TESTING LS -A
+echo --------------
+ls -a
+echo --------------
+echo TESTING LS SEMICOLON PS
+echo --------------
+ls ; ps
+echo --------------
+echo TESTING LS > READING.TXT
+echo --------------
+ls > reading.txt
+echo --------------
+echo TESTING LS PIPE WC
+echo --------------
+ls | wc
+echo --------------
+echo TESTING cd ..
+echo --------------
+echo PREVIOUS DIR:
+echo --------------
+pwd
+echo --------------
+ls ..
+echo --------------
+echo NEW DIR:
+echo --------------
+pwd
+echo --------------
