@@ -18,5 +18,6 @@ void exit_cmd( char *);
 void cd( char **);
 char * trim(char *);
 void redirect_out(char *args[256]);
+void redirect_in(char *args[256]);
 int piping(char *args[256]);
 void execute();

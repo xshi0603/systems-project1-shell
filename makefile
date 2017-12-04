@@ -7,6 +7,7 @@ shell.o: shell.c shell.h
 clean:
 	rm -f *o
 	rm -f *~
+	rm shell
 
 run: all
 	./shell
