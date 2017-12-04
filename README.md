@@ -7,15 +7,20 @@ Features:
 	Forks and executes commands!
 	Parses multiple commands on one line!
 	Redirects using >!
+	Redirects using <! (kinda?)
 	Can pipe singularly
 
 Attempted:
 
-	Tried to implement < redirects but was not able to
+	Tried to implement < redirects but was not able to fully:
+	When you do ./shell < commands.txt, it prints "Insert a command:" between each entry.
+	It also prints "Insert a command:" infinity times after
+	(but if you ctrlC, scroll up and ignore that it works)
 	Planned to implement colors and auto-completion but got stuck on < redirect
 
 Bugs:
 
+	< redirects don't work as intended
 	
 Files & Function Headers:
 
@@ -61,7 +66,13 @@ shell.c
 	Takes the output of a command and writes it to a file
 	
 	====================*/
-		
+			
+	/*======== void redirect_in(char **) ==========
+	Inputs:  char **args
+	Takes a file and reads it to stdin
+	
+	====================*/
+	
 	/*======== int piping(char **) ==========
 	Inputs:  char **args
 	Creates a pipe if "|" is found and runs it w/ the commands found
