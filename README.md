@@ -9,6 +9,7 @@ Features:
 	Redirects using >!
 	Redirects using <! (kinda?)
 	Can pipe singularly
+	Closes with "exit" or ctrlC
 
 Attempted:
 
@@ -16,6 +17,7 @@ Attempted:
 	When you do ./shell < commands.txt, it prints "Insert a command:" between each entry.
 	It also prints "Insert a command:" infinity times after
 	(but if you ctrlC, scroll up and ignore that it works)
+	(Also in my shell you can run bash < commands.txt and that works)
 	Planned to implement colors and auto-completion but got stuck on < redirect
 
 Bugs:
