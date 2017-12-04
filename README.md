@@ -19,8 +19,8 @@ Bugs:
 	
 Files & Function Headers:
 shell.c
-
 	Handles everything
+	
 	/*======== char ** parse_args(char *, char *) ==========
 	Inputs:  char *line, and char *parse_for
 	Returns: Array of strings where each entry is a token 
