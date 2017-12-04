@@ -18,7 +18,9 @@ Bugs:
 
 	
 Files & Function Headers:
+
 shell.c
+
 	Handles everything
 	
 	/*======== char ** parse_args(char *, char *) ==========
